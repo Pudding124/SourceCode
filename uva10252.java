@@ -5,52 +5,64 @@ public class uva10252 {
         Scanner input = new Scanner(System.in);
 
         while(input.hasNext()){
-            String A = input.nextLine();
-            String B = input.nextLine();
-            ArrayList<String> tmpStore = new ArrayList<String>();
-
+            boolean control = true;
+            boolean control2 = true;
+            String A = input.nextLine().replaceAll(" ","");
+            String B = input.nextLine().replaceAll(" ","");
+            HashMap<String, Integer> AStore = new HashMap<String, Integer>();
+            HashMap<String, Integer> BStore = new HashMap<String, Integer>();
+            String alph[] = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
             for(int x = 0;x<A.length();x++){
-                for(int y = 0;y<B.length();y++){
-                    if(A.substring(x,x+1).equals(B.substring(y,y+1))){
-                        boolean control = true;
-                        for(String key:tmpStore){
-                            if(key.equals(A.substring(x,x+1))){
-                                control = false;
-                                break;
+                control = true;
+                for(String key : AStore.keySet()){
+                    if(A.substring(x,x+1).equals(key)){
+                        AStore.put(A.substring(x,x+1), AStore.get(key)+1);
+                        control = false;
+                        break;
+                    }
+                }
+                if(control){
+                    AStore.put(A.substring(x,x+1),1);
+                }
+            }
+
+            for(int x = 0;x<B.length();x++){
+                control2 = true;
+                for(String key : BStore.keySet()){
+                    if(B.substring(x,x+1).equals(key)){
+                        BStore.put(B.substring(x,x+1), BStore.get(key)+1);
+                        control2 = false;
+                    }
+                }
+                if(control2){
+                    BStore.put(B.substring(x,x+1),1);
+                }
+            }
+
+            for(int x = 0;x<alph.length;x++){
+                for(String Akey : AStore.keySet()){
+                    if(Akey.equals(alph[x])){
+                        for(String Bkey : BStore.keySet()){
+                            if(Akey.equals(Bkey)){
+                                if(AStore.get(Akey) >= BStore.get(Bkey)){
+                                    for(int y = 0;y<BStore.get(Bkey);y++){
+                                        System.out.print(Akey);
+                                    }
+                                    break;
+                                }else{
+                                    for(int y = 0;y<AStore.get(Akey);y++){
+                                        System.out.print(Akey);
+                                    }
+                                    break;
+                                }
                             }
                         }
-                        if(control){
-                            tmpStore.add(A.substring(x,x+1));
-                            break;
-                        }
                     }
                 }
             }
-            String[] result = new String[tmpStore.size()];
-            int x = 0;
-            for(String key : tmpStore){
-                result[x] = key;
-                x++;
-            }
+            System.out.println("");
 
-            for(int y = tmpStore.size();y>0;y--){
-                for(int z = 0;z<y-1;z++){
-                    char tmp1 = result[z].charAt(0);
-                    char tmp2 = result[z+1].charAt(0);
-                    if(tmp1>tmp2){
-                        String tmp = result[z];
-                        result[z] = result[z+1];
-                        result[z+1] = tmp;
-                    }
-                }
-            }
-
-            for(String key : result){
-                System.out.print(key);
-            }
-            System.out.println();
         }
+
     }
-
-
 }
