@@ -1,30 +1,38 @@
 package SourceCode;
-import java.util.Scanner;
-public class uva490 {
-    public static void main(String args[]) {
+import java.util.*;
+
+public class uva490{
+
+    public static void main(String[] args){
 
         Scanner input = new Scanner(System.in);
-
+        ArrayList<String> store = new ArrayList<String>();
+        int max = 0;
         while(input.hasNext()){
-            String b = input.next();
-            int judage = Integer.valueOf(b.substring(0,1));
-            if(judage == 0 ) break;
-            int callback = cul(b.length(),b);
-            while(callback >= 10){
-                String x = String.valueOf(callback);
-                callback = cul(x.length(),x);
+
+            String data = input.nextLine();
+            if(data.length()>max){
+                max = data.length();
             }
-            System.out.println(callback);
+            store.add(data);
+        }
+
+        for(int x = 0;x<max;x++){
+
+            for(int y = store.size()-1;y>=0;y--){
+
+                if(store.get(y).length()> x){
+                    System.out.print(store.get(y).substring(x,x+1));
+                }else if(y == 0){
+                    System.out.print("");
+                }else{
+                    System.out.print(" ");
+                }
+
+            }
+            System.out.println("");
         }
 
     }
 
-    public static int cul(int length,String body){
-        int a = 0;
-        for(int i = 0;i<length;i++){
-            a = a + Integer.valueOf(body.substring(i,i+1));
-        }
-
-        return a;
-    }
 }
