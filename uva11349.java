@@ -13,6 +13,12 @@ public class uva11349 {
                 matrix[j] = input.nextInt();
             }
             boolean control = true;
+            for(int j = 0;j<num*num;j++){
+                if(matrix[j]<0){
+                    control = false;
+                    break;
+                }
+            }
             for(int x = 0;x<num*num;x++){
                 int tmp = (num*num-1)-x;
                 if(matrix[x] != matrix[tmp]){
@@ -28,6 +34,5 @@ public class uva11349 {
             }
 
         }
-
     }
 }

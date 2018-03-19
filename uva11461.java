@@ -17,7 +17,7 @@ public class uva11461 {
                 int tmp = num*num;
                 if(tmp >= min && tmp <= max){
                     count++;
-                }else{
+                }else if(tmp > max){
                     break;
                 }
                 num++;

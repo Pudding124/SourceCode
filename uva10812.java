@@ -12,7 +12,9 @@ public class uva10812 {
             int diff = input.nextInt();
             int x = 0;
             int y = 0;
-            if(sum >= diff){
+            if((sum - diff)%2 != 0){
+                System.out.println("impossible");
+            }else if(sum >= diff){
                 y = (sum - diff)/2;
                 x = sum - y;
                 System.out.print(x+" ");
