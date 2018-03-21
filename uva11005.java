@@ -25,7 +25,7 @@ public class uva11005 {
                         min = devResult[dev-2];
                     }
                 }
-                System.out.print("Cheapest base(s) for number "+dex+":");
+                System.out.print("Cheapest base(s) for number "+dex+": ");
                 boolean control = false;
                 for(int y = 0;y<35;y++){
 
@@ -36,6 +36,9 @@ public class uva11005 {
                         System.out.print(y+2);
                     }
                 }
+                System.out.println();
+            }
+            if(i != Case){
                 System.out.println();
             }
         }
