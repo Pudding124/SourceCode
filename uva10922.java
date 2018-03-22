@@ -13,7 +13,7 @@ public class uva10922 {
                 result = result + Integer.valueOf(num.substring(x,x+1));
             }
             if(result%9 != 0){
-                System.out.println(num+"  is not a multiple of 9.");
+                System.out.println(num+" is not a multiple of 9.");
                 control = false;
             }
             int count = 1;
