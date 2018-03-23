@@ -10,6 +10,9 @@ public class uva10226 {
         while(i<=Case){
             TreeMap<String, Double> store = new TreeMap<String, Double>();
             String tmp;
+            if(i>1){
+                System.out.println("");
+            }
             while(input.hasNextLine() && !(tmp=input.nextLine()).equals("")){
                 boolean control = true;
                 for(String key : store.keySet()){
