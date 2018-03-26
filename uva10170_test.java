@@ -4,17 +4,17 @@ public class uva10170_test {
         Scanner input = new Scanner(System.in);
 
         while(input.hasNext()){
-            int people = input.nextInt();
-            int dayLine = input.nextInt();
+            long people = input.nextLong();
+            long dayLine = input.nextLong();
 
-            int day = 1;
-            int tmp = 0;
-             while(dayLine > day){
-                 day = day + people ;
-                 tmp = people;
-                 people = people + 1;
-             }
-             System.out.println(tmp);
+            long day = 1;
+            long tmp = 0;
+            while(dayLine >= day){
+                day = day + people ;
+                tmp = people;
+                people = people + 1;
+            }
+            System.out.println(tmp);
         }
     }
 }
