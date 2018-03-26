@@ -2,9 +2,15 @@ import java.util.*;
 public class uva10062 {
     public static void main(String[] args){
         Scanner input = new Scanner(System.in);
+        boolean flag = false;
         while(input.hasNext()){
-            String data = input.next();
-            HashMap<Integer, Integer> store = new HashMap<Integer, Integer>();
+            if(!flag){
+                flag = true;
+            }else{
+                System.out.println();
+            }
+            String data = input.nextLine();
+            TreeMap<Integer, Integer> store = new TreeMap<Integer, Integer>();
             char characters[] = data.toCharArray();
             int[] result = new int[characters.length];
             for(int i = 0;i<characters.length;i++){
@@ -46,9 +52,23 @@ public class uva10062 {
                 }
             }
 
+            for(int i = name.length-1;i>=0;i--){
+                for(int j = 0;j<i;j++){
+                    if(value[j] == value[j+1] && name[j] < name[j+1]){
+                        int tmpName = name[j];
+                        int tmpValue = value[j];
+                        value[j] = value[j+1];
+                        name[j] = name[j+1];
+                        value[j+1] = tmpValue;
+                        name[j+1] = tmpName;
+                    }
+                }
+            }
+
             for(int i = 0;i<name.length;i++){
                 System.out.println(name[i]+" "+value[i]);
             }
+
         }
     }
 }
